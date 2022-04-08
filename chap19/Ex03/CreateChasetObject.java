@@ -17,6 +17,19 @@ public class CreateChasetObject {
 		//2. Charset.forName("MS949")  <== 직접할당해서 사용
 		Charset cs2 = Charset.forName("MS949");
 		System.out.println(cs2);
+		
+		Charset cs3 = Charset.forName("UTF-8");
+		System.out.println(cs2);
+		
+		Charset cs4 = Charset.forName("EUC-KR");	// <== 존재하지 않는 인코딩을 넣으면 예외가 발생 실행예외 처리
+		System.out.println(cs2);
+		
+		System.out.println();
+		
+		System.out.println(Charset.isSupported("MS949"));
+		System.out.println(Charset.isSupported("UTF-16"));
+		System.out.println(Charset.isSupported("UTF-8"));
+		System.out.println(Charset.isSupported("EUC-KR"));
 
 	}
 
