@@ -22,7 +22,15 @@ public class FileInputStream_1 {
 		
 		// InputStream 객체를 생성해야 파일의 내용을 읽을수 있다.
 		InputStream is = new FileInputStream(inFile);
-			//InputStream은 추상클래스 , 직접객체생성을 할 수 없다 타입지정은 가능 
+			//InputStream은 추상클래스 , 직접객체생성을 할 수 없다 타입지정은 가능
+		
+		// Java에서 줄바꿈 처리
+		//   -UNIX : \n
+		//   -Windows : \r\n      <==  \r 은 생략 가능
+		//   -MAC     :  \r  
+		
+
+		
 		
 		// 한 바이트 데이터를 읽어서 char로 변환후 출력
 		System.out.print((char)is.read()); 	// read() 한바이트를 읽어들임 
@@ -57,6 +65,9 @@ public class FileInputStream_1 {
 		while ((data = is1.read()) != -1) {	// 마지막값까지 계속 순환
 			System.out.print((char) data);
 		}
+			// ! 중요 : read() : 1byte를 읽어들임  반환타입은 int 다 
+			// FileInputStream은 반드시 index 0번부터 읽어들임
+				// FileRandomAccess 를 사용해서 임의의 index에서 읽어들임
 		
 		System.out.println();
 		System.out.println();
@@ -64,7 +75,7 @@ public class FileInputStream_1 {
 		
 		InputStream is2 = new FileInputStream(inFile);
 		
-		while ((data = is2.read()) != -1) {	// 마지막값까지 계속 순환
+		while ((data = is2.read()) != -1) {	// 마지막값까지 계속 순환      (값이존재하지않으면 -1리턴)
 			System.out.println("읽은 데이터 : " + (char) data + ", 남은 바이트 수 : " + is2.available());
 		}
 		
