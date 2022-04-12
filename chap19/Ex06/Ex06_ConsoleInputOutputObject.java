@@ -33,13 +33,18 @@ public class Ex06_ConsoleInputOutputObject {
 		os1.close();
 		
 		
-		// input.txt 출력
+		// input.txt 읽어오기
 		InputStream is2 = new FileInputStream(f1);
-		int data ;
 		byte [] arr2 = new byte [100];
-		while((data = is2.read(arr2)) != -1) {
-			System.out.println(new String(arr2 , Charset.defaultCharset()));
-		}
+		is2.read(arr2);
+		
+		
+		// 출력
+		OutputStream os2 = System.out;
+		os2.write(arr2);
+		os2.flush();
+		os2.close();
+		
 		
 		
 		
